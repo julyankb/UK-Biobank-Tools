@@ -25,8 +25,10 @@ c = conn.cursor()
 
 # DEFINE FUNCTIONS
 def create_tables():
-        c.execute('CREATE TABLE IF NOT EXISTS participants (rowid integer primary key autoincrement, eid, df, instnum, itemnum, value)')
-	c.execute('CREATE TABLE IF NOT EXISTS dfdesc (df integer primary key, desc, category, type)')
+        command = 'CREATE TABLE IF NOT EXISTS participants (rowid integer primary key autoincrement, eid, df, instnum, itemnum, value)'
+        c.execute(command)
+        command = 'CREATE TABLE IF NOT EXISTS dfdesc (df integer primary key, desc, category, type)'
+        c.execute(command)
 	
 def insert_participant_data(line):
 	data = line.split('\t')
@@ -50,11 +52,9 @@ def read_from_db(query):
 	c.execute(query)
 	for row in c.fetchall():
 		 print row
-
 # ---------------------------------------------------------------------------------------------------
 # ALWAYS RUN
 create_tables()
-
 # ---------------------------------------------------------------------------------------------------
 # INSERT INTO patients TABLE
 run_below = 0
@@ -78,7 +78,6 @@ if run_below:
 	print "Creating index on participants.eid..."
 	c.execute("CREATE INDEX IF NOT EXISTS eid_index ON participants (eid)")
 	print "Process completed."
-
 # ---------------------------------------------------------------------------------------------------
 # INSERT INTO dfdesc TABLE 
 run_below = 0
@@ -88,7 +87,6 @@ if run_below:
 		#print line
 		insert_dfdesc_data(line)
 		print "Inserted df %s"%line.split('\t')[0]	
-
 # ---------------------------------------------------------------------------------------------------
 # PRINT TIME ELAPSED
 print 'Time elapsed:', time.time() - start_time
