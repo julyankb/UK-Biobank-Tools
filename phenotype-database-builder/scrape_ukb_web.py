@@ -1,8 +1,8 @@
 '''
 This script will scrape the UKB online showcase 
 and print data-fields, their descriptions along 
-with the type of variable they correspond to, i.e., 
-Integer, Categorical, Continuous, etc.
+with the type of variable they correspond to, 
+i.e., Integer, Categorical, Continuous, etc.
 '''
 
 import bs4 as bs
@@ -43,5 +43,4 @@ for url in soup.find_all('a'):
 
 if __name__ == "__main__":
 	for f in df_descriptions:
-		#print '%s\t%s\t%s\t%s'%(f[0],f[1],f[2],f[3])
 		print f
