@@ -1,3 +1,7 @@
+'''
+This script will scrape the UKB online showcase and print data-fields, their descriptions along with the type of variable they correspond to, i.e., Integer, Categorical, Continuous, etc.
+'''
+
 import bs4 as bs
 from urllib2 import urlopen
 import unicodedata
