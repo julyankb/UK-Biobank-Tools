@@ -5,7 +5,7 @@ import os
 import gzip
 import subprocess
 import time
-import scrape_ukb
+import scrape_ukb_web
 
 start_time = time.time()
 
